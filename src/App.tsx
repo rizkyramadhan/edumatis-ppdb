@@ -102,6 +102,10 @@ export default () => {
     return <div className={"wrapper"}>
         <h1 className="ms-font-su">PPDB {sekolah.nama_sekolah} </h1>
         {({
+            registered:
+                <div style={{marginTop: 20, marginBottom: 20}}><MessageBar messageBarType={MessageBarType.error}>
+                    No. Akta Kelahiran ini sudah terdaftar, mohon ubah data anda.
+                </MessageBar></div>,
             draft:
                 <div style={{marginTop: 20, marginBottom: 20}}><MessageBar messageBarType={MessageBarType.info}>
                     Isi No. Akta Kelahiran terlebih dahulu untuk memastikan data diri Anda belum pernah di-entry
@@ -133,6 +137,15 @@ export default () => {
                     <TextField label="No. Akta Kelahiran"
                                field="no_akta_kelahiran"
                                type="number"
+                               onBlur={async (e: any) => {
+                                   let res = await api.cekAkta(e.target.value, sekolah.id);
+                                   if (res.length > 0) {
+                                       setStatus("registered");
+                                       setErrors({...errors, no_akta_kelahiran: ' ini sudah terdaftar'});
+                                   } else {
+                                       setStatus("loaded");
+                                   }
+                               }}
                                data={data} setData={setData} errors={errors} setErrors={setErrors}
                     />
 
@@ -627,7 +640,7 @@ export default () => {
                 <div style={{marginTop: 20}}><MessageBar messageBarType={MessageBarType.blocked}>
                     Mohon benahi {Object.keys(errors).length} kesalahan berikut:
                     <ul>
-                        {Object.keys(errors).map(e => <li>{e} {errors[e]}</li>)}
+                        {Object.keys(errors).map((e,i) => <li key={i}>{e} {errors[e]}</li>)}
                     </ul>
                 </MessageBar></div>
             }
@@ -635,20 +648,28 @@ export default () => {
             <CompoundButton primary={true}
                             style={{marginTop: 20, marginBottom: 200}}
                             onClick={async () => {
-                                let err: any = {};
-                                let isError = false;
-                                for (let r of required) {
-                                    if (!data[r]) {
-                                        isError = true;
-                                        err[r] = "Harus diisi.";
-                                    }
-                                }
-                                if (isError) {
-                                    setErrors(err);
+
+
+                                let res = await api.cekAkta(data.no_akta_kelahiran, sekolah.id);
+                                if (res.length > 0) {
+                                    setStatus("registered");
+                                    setErrors({...errors, no_akta_kelahiran: ' ini sudah terdaftar'});
                                 } else {
-                                    setStatus('loading');
-                                    localStorage.ppdbId = await api.send({...data, sekolah_id: sekolah.id});
-                                    setStatus('ready');
+                                    let err: any = {};
+                                    let isError = false;
+                                    for (let r of required) {
+                                        if (!data[r]) {
+                                            isError = true;
+                                            err[r] = "Harus diisi.";
+                                        }
+                                    }
+                                    if (isError) {
+                                        setErrors(err);
+                                    } else {
+                                        setStatus('loading');
+                                        localStorage.ppdbId = await api.send({...data, sekolah_id: sekolah.id});
+                                        setStatus('ready');
+                                    }
                                 }
                             }}
                             secondaryText="Dan lanjutkan membayar biaya pendaftaran">
@@ -658,11 +679,16 @@ export default () => {
     </div>
 }
 
-const TextField = ({field, label, data, setData, errors, setErrors, suffix, multiline = false, onRenderSuffix, type = 'text'}: any) => {
+const TextField = ({
+                       field, label, data, setData, errors, setErrors,
+                       suffix, multiline = false, onRenderSuffix, type = 'text',
+                       onBlur
+                   }: any) => {
     return <FabricTextField
         label={label}
         value={data[field]}
         suffix={suffix}
+        onBlur={onBlur}
         multiline={multiline}
         onRenderSuffix={onRenderSuffix}
         required={required.indexOf(field) >= 0}

@@ -18,7 +18,6 @@ export class api {
         const url = `${plansys}cek&a=${akta}&s=${sekolah_id}`;
         const res = await Axios.get(url);
 
-        if (res.data.length > 0) return res.data[0];
         return res.data;
     }
 
