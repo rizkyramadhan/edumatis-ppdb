@@ -5,8 +5,8 @@ export const hashPassword = async (user_id: string) => {
     method: "POST",
     body: JSON.stringify({
       query: `{
-          session(limit:1) {
-            id
+          murid(limit:1) {
+            nama_murid
           }
         }`
     }),
