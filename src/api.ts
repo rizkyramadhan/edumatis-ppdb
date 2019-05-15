@@ -5,15 +5,19 @@ import createRecord from "./createRecord";
 export class api {
   static async getSekolah() {
     const host = window.location.hostname;
-    const res = await rawQuery(`{
+    const res = await rawQuery(
+      `{
         sekolah(where: {ppdb_host: {_eq: "${host}"}}) {
             id
             logo_url
             nama_sekolah
             nama_singkat
         }
-    }`);
+    }`,
+      { debug: true }
+    );
 
+    console.log(res);
     if (res && res.sekolah && res.sekolah.length > 0) return res.sekolah[0];
   }
 

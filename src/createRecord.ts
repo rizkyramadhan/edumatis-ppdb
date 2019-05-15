@@ -25,7 +25,7 @@ export default async (table: string, data: any, options?: opts) => {
   }
   let headers: any = {
     "Content-Type": "application/json",
-    "x-hasura-secret-key": "edumatis123"
+    "x-hasura-admin-secret": "edumatis123"
   };
   const response: Response = await fetch(config.url, {
     method: "POST",
