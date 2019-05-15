@@ -40,8 +40,6 @@ const required = [
   "pekerjaan_ibu",
   "pendidikan_ibu",
   "jenis_tinggal",
-  "alamat",
-  "propinsi",
   "no_hp_ortu",
   "jarak_ke_sekolah",
   "alat_transport"
