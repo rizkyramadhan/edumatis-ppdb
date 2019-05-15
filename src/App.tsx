@@ -78,7 +78,7 @@ export default () => {
     }
   }, []);
 
-  if (sekolah === false || !sekolah.id) {
+  if (!sekolah || (!!sekolah && !sekolah.id)) {
     return (
       <div className={"wrapper"}>
         <div className="ms-font-su">Pendaftaran PPDB</div>
