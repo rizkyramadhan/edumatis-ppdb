@@ -37,7 +37,7 @@ export class api {
   }
 
   static async send(data: any) {
-    let res = await createRecord("murid", {
+    let muridId = await createRecord("murid", {
       nama_murid: data.nama_lengkap,
       nsa: data.nisn,
       sekolah_id: data.sekolah_id,
@@ -46,7 +46,31 @@ export class api {
       data: data
     });
 
-    await hashPassword(res);
-    return res;
+    await hashPassword(muridId);
+
+    let kelas = await rawQuery(`{
+      kelas(where: {nama_kelas: {_eq: "PPDB"}, sekolah_id: {_eq: ${
+        data.sekolah_id
+      }}}) {
+        id
+      }
+    }`);
+
+    let kelasId = 0;
+    if (kelas.kelas.length === 0) {
+      kelasId = await createRecord("kelas", {
+        nama_kelas: "PPDB",
+        sekolah_id: data.sekolah_id
+      });
+    } else {
+      kelasId = kelas.kelas[0].id;
+    }
+
+    await createRecord("kelas_murid", {
+      kelas_id: kelasId,
+      murid_id: muridId
+    });
+
+    return muridId;
   }
 }

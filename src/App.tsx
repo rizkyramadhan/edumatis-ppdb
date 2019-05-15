@@ -117,6 +117,7 @@ export default () => {
             className="ms-font-xl"
           >
             Kode Sekolah: {sekolah.id.pad(3)}
+            <br/>
             No Induk: {localStorage.ppdbId}
             <br />
             Password : 123
@@ -126,7 +127,7 @@ export default () => {
             style={{ float: "right" }}
             onClick={() => {
               if (
-                confirm("Mohon catat KodeSiswa dan Password, sudah dicatat ?")
+                confirm("Mohon catat Kode Sekolah, No. Induk dan Password, sudah dicatat ?")
               ) {
                 localStorage.removeItem("ppdbId");
                 setStatus("draft");
