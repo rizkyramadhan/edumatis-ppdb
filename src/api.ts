@@ -42,6 +42,7 @@ export class api {
       nsa: data.nisn,
       sekolah_id: data.sekolah_id,
       nisn: data.nisn,
+      password: "123",
       no_akta_kelahiran: data.no_akta_kelahiran,
       data: data
     });
