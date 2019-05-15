@@ -118,7 +118,7 @@ export default () => {
           >
             Kode Sekolah: {sekolah.id.pad(3)}
             <br/>
-            No Induk: {localStorage.ppdbId}
+            No Induk / NSA: {data.nisn}
             <br />
             Password : 123
           </pre>
@@ -209,18 +209,6 @@ export default () => {
             <TextField
               label="No. Akta Kelahiran"
               field="no_akta_kelahiran"
-              onBlur={async (e: any) => {
-                let res = await api.cekAkta(e.target.value, sekolah.id);
-                if (res.length > 0) {
-                  setStatus("registered");
-                  setErrors({
-                    ...errors,
-                    no_akta_kelahiran: " ini sudah terdaftar"
-                  });
-                } else {
-                  setStatus("loaded");
-                }
-              }}
               data={data}
               setData={setData}
               errors={errors}
@@ -247,6 +235,18 @@ export default () => {
               setData={setData}
               errors={errors}
               setErrors={setErrors}
+              onBlur={async (e: any) => {
+                let res = await api.cekNsa(e.target.value, sekolah.id);
+                if (res.length > 0) {
+                  setStatus("registered");
+                  setErrors({
+                    ...errors,
+                    nisn: " ini sudah terdaftar"
+                  });
+                } else {
+                  setStatus("loaded");
+                }
+              }}
             />
           </div>
 
@@ -960,12 +960,12 @@ export default () => {
           primary={true}
           style={{ marginTop: 20, marginBottom: 200 }}
           onClick={async () => {
-            let res = await api.cekAkta(data.no_akta_kelahiran, sekolah.id);
+            let res = await api.cekNsa(data.nisn, sekolah.id);
             if (res.length > 0) {
               setStatus("registered");
               setErrors({
                 ...errors,
-                no_akta_kelahiran: " ini sudah terdaftar"
+                nisn: " ini sudah terdaftar"
               });
             } else {
               let err: any = {};

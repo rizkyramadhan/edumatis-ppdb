@@ -21,9 +21,9 @@ export class api {
     if (res && res.sekolah && res.sekolah.length > 0) return res.sekolah[0];
   }
 
-  static async cekAkta(akta: string, sekolah_id: number) {
+  static async cekNsa(nsa: string, sekolah_id: number) {
     const res = await rawQuery(`{
-      murid(where: {no_akta_kelahiran: {_eq: "${akta}"}, sekolah_id: {_eq: ${sekolah_id}}}) {
+      murid(where: {nsa: {_eq: "${nsa}"}, sekolah_id: {_eq: ${sekolah_id}}}) {
         id
         nama_murid
         nisn
