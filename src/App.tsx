@@ -116,7 +116,8 @@ export default () => {
             style={{ margin: 50, textAlign: "left", fontWeight: "bold" }}
             className="ms-font-xl"
           >
-            Kode Siswa: {sekolah.id.pad(3)}-{localStorage.ppdbId}
+            Kode Sekolah: {sekolah.id.pad(3)}
+            No Induk: {localStorage.ppdbId}
             <br />
             Password : 123
           </pre>

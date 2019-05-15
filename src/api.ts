@@ -1,6 +1,7 @@
 import Axios from "axios";
 import rawQuery from "./rawQuery";
 import createRecord from "./createRecord";
+import { hashPassword } from "./hashPassword";
 
 export class api {
   static async getSekolah() {
@@ -17,7 +18,6 @@ export class api {
       { debug: true }
     );
 
-    console.log(res);
     if (res && res.sekolah && res.sekolah.length > 0) return res.sekolah[0];
   }
 
@@ -37,6 +37,16 @@ export class api {
   }
 
   static async send(data: any) {
-    return await createRecord("murid", data);
+    let res = await createRecord("murid", {
+      nama_murid: data.nama_lengkap,
+      nsa: data.nisn,
+      sekolah_id: data.sekolah_id,
+      nisn: data.nisn,
+      no_akta_kelahiran: data.no_akta_kelahiran,
+      data: data
+    });
+
+    await hashPassword(res);
+    return res;
   }
 }
