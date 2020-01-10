@@ -163,21 +163,21 @@ export default () => {
   return (
     <div className={"wrapper"}>
       <div className="ms-Grid-row">
-        <div className="ms-Grid-col ms-sm2">
-        <img src="/logo_maryam.png" alt="PPDB Maryam"
-          style={{
-            // display: 'flex',
-            width: 150, height: 150,
-            marginTop:15,
-            justifyContent: 'center',
-            alignItems: 'center',
-            // float: 'right',
-          }}
-         />
+        <div className="ms-Grid-col ms-sm12 ms-md2">
+          <img src="/logo_maryam.png" alt="PPDB Maryam"
+            style={{
+              display: 'flex',
+              width: 150, height: 150,
+              marginTop:15,
+              justifyContent: 'center',
+              alignItems: 'center',
+              alignSelf: 'center',
+            }}
+          />
         </div>
-        <div className="ms-Grid-col ms-sm10">
+        <div className="ms-Grid-col ms-sm12 ms-md10">
           <h2 style={{
-              display: 'flex', justifyContent:'center', alignItems: 'center',
+              display: 'flex', justifyContent:'center', alignItems: 'center', textAlign: 'center'
               }}>FORMULIR PENDAFTARAN PESERTA DIDIK BARU</h2>
           {/* <h1 className="ms-font-su" 
             style={{
@@ -201,7 +201,7 @@ export default () => {
           }}>FORMULIR PESERTA DIDIK BARU</h3>
 
       <div className="ms-Grid-row">          
-        <div className="ms-Grid-col ms-sm6 ms-md3">
+        <div className="ms-Grid-col ms-sm12 ms-md3">
           <DatePicker
             value={moment(data).toDate()}
             formatDate={(date: Date | undefined): string => {
@@ -218,7 +218,7 @@ export default () => {
             label="Tanggal Daftar"
           />
         </div>
-        <div className="ms-Grid-col ms-sm6 ms-md6">
+        <div className="ms-Grid-col ms-sm12 ms-md6">
           <TextField
             label="No. Formulir"
             field="no_formulir"
@@ -228,7 +228,7 @@ export default () => {
             setErrors={setErrors}
           />
         </div>
-        <div className="ms-Grid-col ms-sm6 ms-md3">
+        <div className="ms-Grid-col ms-u-smOffset3 ms-md3">
           <h4 style={{float:'right', marginTop:35}}>F-PSB</h4>
         </div>
       </div>
@@ -285,7 +285,7 @@ export default () => {
 
       <div className="ms-Grid" dir="ltr">
         <div className="ms-Grid-row">
-          <div className="ms-Grid-col ms-sm12">
+          <div className="ms-Grid-col ms-sm12 ms-md12">
           <TextField
               label="No. Akta Kelahiran"
               field="no_akta_kelahiran"
@@ -297,7 +297,7 @@ export default () => {
           </div>
         </div>
         <div className="ms-Grid-row">
-          <div className="ms-Grid-col ms-sm9 ms-md9">
+          <div className="ms-Grid-col ms-sm12 ms-md9">
               <TextField
                 label="Nama Lengkap"
                 field="nama_lengkap"
@@ -307,7 +307,7 @@ export default () => {
                 setErrors={setErrors}
               />
             </div>
-            <div className="ms-Grid-col ms-sm3 ms-md3">
+            <div className="ms-Grid-col ms-sm12 ms-md3">
               <Dropdown
                 field="jenis_kelamin"
                 label="Jenis Kelamin"
@@ -320,7 +320,7 @@ export default () => {
             </div>
         </div>        
         <div className="ms-Grid-row">
-          <div className="ms-Grid-col ms-sm6x">
+          <div className="ms-Grid-col ms-sm12 ms-md6">
             <TextField
               label="NISN"
               field="nisn"
@@ -352,7 +352,7 @@ export default () => {
               setErrors={setErrors}
             />
           </div> */}
-          <div className="ms-Grid-col ms-sm6">
+          <div className="ms-Grid-col ms-sm12 ms-md6">
             <TextField
               label="NIK"
               field="nik"
@@ -364,7 +364,7 @@ export default () => {
           </div>
         </div>
         <div className="ms-Grid-row">
-          <div className="ms-Grid-col ms-sm4">
+          <div className="ms-Grid-col ms-sm12 ms-md4">
             <TextField
               label="Tempat Lahir"
               field="tempat_lahir"
@@ -374,7 +374,7 @@ export default () => {
               setErrors={setErrors}
             />
           </div>
-          <div className="ms-Grid-col ms-sm4">
+          <div className="ms-Grid-col ms-sm12 ms-md4">
             <DatePicker
               value={moment(data.tgl_lahir).toDate()}
               formatDate={(date: Date | undefined): string => {
@@ -393,7 +393,7 @@ export default () => {
               label="Tanggal Lahir"
             />
           </div>
-          <div className="ms-Grid-col ms-sm4">
+          <div className="ms-Grid-col ms-sm12 ms-md4">
             <Dropdown
               field="agama"
               label="Agama"
@@ -425,7 +425,7 @@ export default () => {
               setErrors={setErrors}
             />
           </div> */}
-          <div className="ms-Grid-col ms-sm6">
+          <div className="ms-Grid-col ms-sm12 ms-md6">
             <TextField
               label="Kelas"
               field="kelas"
@@ -473,7 +473,7 @@ export default () => {
 
         <h2 className="ms-font-xl">Data Ayah</h2>
         <div className="ms-Grid-row">
-          <div className="ms-Grid-col ms-sm9">
+          <div className="ms-Grid-col ms-sm12 ms-md9">
             <TextField
               label="Nama Ayah"
               field="nama_ayah"
@@ -483,7 +483,7 @@ export default () => {
               setErrors={setErrors}
             />
           </div>
-          <div className="ms-Grid-col ms-sm6 ms-md3">
+          <div className="ms-Grid-col ms-sm12 ms-md3">
             <TextField
                 label="Tahun Lahir Ayah"
                 field="tahun_lahir_ayah"
@@ -496,7 +496,7 @@ export default () => {
         </div>
         
         <div className="ms-Grid-row">
-          <div className="ms-Grid-col ms-sm6">
+          <div className="ms-Grid-col ms-sm12 ms-md6">
             <TextField
               label="NIK Ayah"
               field="nik_ayah"
@@ -506,7 +506,7 @@ export default () => {
               setErrors={setErrors}
             />
           </div>
-          <div className="ms-Grid-col ms-sm6">
+          <div className="ms-Grid-col ms-sm12 ms-md6">
             <Dropdown
               field="pendidikan_ayah"
               label="Pendidikan Ayah"
@@ -532,7 +532,7 @@ export default () => {
         </div>
 
         <div className="ms-Grid-row">
-          <div className="ms-Grid-col ms-sm6">
+          <div className="ms-Grid-col ms-sm12 ms-md6">
             <Dropdown
               field="pekerjaan_ayah"
               label="Pekerjaan Ayah"
@@ -555,7 +555,7 @@ export default () => {
               setErrors={setErrors}
             />
           </div>         
-          <div className="ms-Grid-col ms-sm6">
+          <div className="ms-Grid-col ms-sm12 ms-md6">
             <Dropdown
               field="penghasilan_ayah"
               label="Penghasilan Bulanan Ayah"
@@ -574,7 +574,7 @@ export default () => {
 
         <h2 className="ms-font-xl">Data Ibu</h2>
         <div className="ms-Grid-row">
-          <div className="ms-Grid-col ms-sm9">
+          <div className="ms-Grid-col ms-sm12 ms-md9">
             <TextField
               label="Nama Ibu"
               field="nama_ibu"
@@ -584,7 +584,7 @@ export default () => {
               setErrors={setErrors}
             />
           </div>
-          <div className="ms-Grid-col ms-sm6 ms-md3">
+          <div className="ms-Grid-col ms-sm12 ms-md3">
             <TextField
                 label="Tahun Lahir Ibu"
                 field="tahun_lahir_ibu"
@@ -597,7 +597,7 @@ export default () => {
         </div>
         
         <div className="ms-Grid-row">
-          <div className="ms-Grid-col ms-sm6">
+          <div className="ms-Grid-col ms-sm12 ms-md6">
             <TextField
               label="NIK Ibu"
               field="nik_ibu"
@@ -607,7 +607,7 @@ export default () => {
               setErrors={setErrors}
             />
           </div>
-          <div className="ms-Grid-col ms-sm6">
+          <div className="ms-Grid-col ms-sm12 ms-md6">
             <Dropdown
               field="pendidikan_ibu"
               label="Pendidikan Ibu"
@@ -633,7 +633,7 @@ export default () => {
         </div>
 
         <div className="ms-Grid-row">         
-          <div className="ms-Grid-col ms-sm6">
+          <div className="ms-Grid-col ms-sm12 ms-md6">
             <Dropdown
               field="pekerjaan_ibu"
               label="Pekerjaan Ibu"
@@ -656,7 +656,7 @@ export default () => {
               setErrors={setErrors}
             />
           </div>
-          <div className="ms-Grid-col ms-sm6">
+          <div className="ms-Grid-col ms-sm12 ms-md6">
             <Dropdown
               field="penghasilan_ibu"
               label="Penghasilan Bulanan Ibu"
@@ -675,7 +675,7 @@ export default () => {
 
         <h2 className="ms-font-xl">Data Wali Murid</h2>
         <div className="ms-Grid-row">
-          <div className="ms-Grid-col ms-sm9">
+          <div className="ms-Grid-col ms-sm12 ms-md9">
             <TextField
               label="Nama Wali Murid"
               field="nama_wali"
@@ -685,7 +685,7 @@ export default () => {
               setErrors={setErrors}
             />
           </div>
-          <div className="ms-Grid-col ms-sm6 ms-md3">
+          <div className="ms-Grid-col ms-sm12 ms-md3">
             <TextField
                 label="Tahun Lahir Wali Murid"
                 field="tahun_lahir_wali"
@@ -698,7 +698,7 @@ export default () => {
         </div>
         
         <div className="ms-Grid-row">
-          <div className="ms-Grid-col ms-sm6">
+          <div className="ms-Grid-col ms-sm12 ms-md6">
             <TextField
               label="NIK Wali Murid"
               field="nik_wali"
@@ -708,7 +708,7 @@ export default () => {
               setErrors={setErrors}
             />
           </div>
-          <div className="ms-Grid-col ms-sm6">
+          <div className="ms-Grid-col ms-sm12 ms-md6">
             <Dropdown
               field="pendidikan_wali"
               label="Pendidikan Wali Murid"
@@ -734,7 +734,7 @@ export default () => {
         </div>
 
         <div className="ms-Grid-row">         
-          <div className="ms-Grid-col ms-sm6">
+          <div className="ms-Grid-col ms-sm12 ms-md6">
             <Dropdown
               field="pekerjaan_wali"
               label="Pekerjaan Wali Murid"
@@ -757,7 +757,7 @@ export default () => {
               setErrors={setErrors}
             />
           </div>
-          <div className="ms-Grid-col ms-sm6">
+          <div className="ms-Grid-col ms-sm12 ms-md6">
             <Dropdown
               field="penghasilan_wali"
               label="Penghasilan Bulanan Wali Murid"
@@ -830,7 +830,7 @@ export default () => {
             />
           </div>
 
-          <div className="ms-Grid-col ms-sm3 ms-md2">
+          <div className="ms-Grid-col ms-sm6 ms-md2">
             <TextField
               label="Kode Pos"
               field="alamat_kk_kodepos"
@@ -842,7 +842,7 @@ export default () => {
           </div>
         </div>
         <div className="ms-Grid-row">
-          <div className="ms-Grid-col ms-sm6 ms-md3">
+          <div className="ms-Grid-col ms-sm12 ms-md3">
             <TextField
               field="alamat_kk_kelurahan"
               label="Kelurahan/Desa"
@@ -852,7 +852,7 @@ export default () => {
               setErrors={setErrors}
             />
           </div>
-          <div className="ms-Grid-col ms-sm6 ms-md3">
+          <div className="ms-Grid-col ms-sm12 ms-md3">
             <TextField
               field="alamat_kk_kecamatan"
               label="Kecamatan"
@@ -862,7 +862,7 @@ export default () => {
               setErrors={setErrors}
             />
           </div>
-          <div className="ms-Grid-col ms-sm6 ms-md3">
+          <div className="ms-Grid-col ms-sm12 ms-md3">
             <TextField
               field="alamat_kk_kabupaten"
               label="Kabupaten/Kota"
@@ -872,7 +872,7 @@ export default () => {
               setErrors={setErrors}
             />
           </div>
-          <div className="ms-Grid-col ms-sm6 ms-md3">
+          <div className="ms-Grid-col ms-sm12 ms-md3">
             <TextField
               field="alamat_kk_provinsi"
               label="Provinsi"
@@ -932,7 +932,7 @@ export default () => {
                 />
               </div>
 
-              <div className="ms-Grid-col ms-sm3 ms-md2">
+              <div className="ms-Grid-col ms-sm6 ms-md2">
                 <TextField
                   label="Kode Pos"
                   field="alamat_dm_kodepos"
@@ -944,7 +944,7 @@ export default () => {
               </div>
             </div>
             <div className="ms-Grid-row">
-              <div className="ms-Grid-col ms-sm6 ms-md3">
+              <div className="ms-Grid-col ms-sm12 ms-md3">
                 <TextField
                   field="alamat_dm_kelurahan"
                   label="Kelurahan/Desa"
@@ -954,7 +954,7 @@ export default () => {
                   setErrors={setErrors}
                 />
               </div>
-              <div className="ms-Grid-col ms-sm6 ms-md3">
+              <div className="ms-Grid-col ms-sm12 ms-md3">
                 <TextField
                   field="alamat_dm_kecamatan"
                   label="Kecamatan"
@@ -964,7 +964,7 @@ export default () => {
                   setErrors={setErrors}
                 />
               </div>
-              <div className="ms-Grid-col ms-sm6 ms-md3">
+              <div className="ms-Grid-col ms-sm12 ms-md3">
                 <TextField
                   field="alamat_dm_kabupaten"
                   label="Kabupaten"
@@ -974,7 +974,7 @@ export default () => {
                   setErrors={setErrors}
                 />
               </div>
-              <div className="ms-Grid-col ms-sm6 ms-md3">
+              <div className="ms-Grid-col ms-sm12 ms-md3">
                 <TextField
                   field="alamat_dm_provinsi"
                   label="Provinsi"
@@ -990,7 +990,7 @@ export default () => {
         <br />
         <br />
         <div className="ms-Grid-row">
-          <div className="ms-Grid-col ms-sm4 ms-md2">
+          <div className="ms-Grid-col ms-sm6 ms-md2">
             <TextField
               label="Tinggi"
               field="tinggi"
@@ -1002,7 +1002,7 @@ export default () => {
             />
           </div>
 
-          <div className="ms-Grid-col ms-sm4 ms-md2">
+          <div className="ms-Grid-col ms-sm6 ms-md2">
             <TextField
               label="Berat"
               field="berat"
@@ -1016,7 +1016,7 @@ export default () => {
         </div>
         
         <div className="ms-Grid-row">
-          <div className="ms-Grid-col ms-sm6 ms-md6">
+          <div className="ms-Grid-col ms-sm12 ms-md6">
             <TextField
               field="no_hp_ortu"
               label="No. HP Orang Tua / Wali"
@@ -1026,7 +1026,7 @@ export default () => {
               setErrors={setErrors}
             />
           </div>
-          <div className="ms-Grid-col ms-sm6 ms-md6">
+          <div className="ms-Grid-col ms-sm12 ms-md6">
             <TextField
               field="no_hp_siswa"
               label="No. HP Siswa"
@@ -1038,7 +1038,7 @@ export default () => {
           </div>          
         </div>
         <div className="ms-Grid-row">
-          <div className="ms-Grid-col ms-sm6">
+          <div className="ms-Grid-col ms-sm12 ms-md6">
             <TextField
               field="jarak_ke_sekolah"
               label="Jarak Tempat Tinggal ke Sekolah"
@@ -1049,7 +1049,7 @@ export default () => {
               setErrors={setErrors}
             />
           </div>
-          <div className="ms-Grid-col ms-sm6">
+          <div className="ms-Grid-col ms-sm12 ms-md6">
             <Dropdown
               field="alat_transport"
               label="Alat Transportasi Ke Sekolah"
@@ -1070,7 +1070,7 @@ export default () => {
         </div>
 
         <div className="ms-Grid-row">
-        < div className="ms-Grid-col ms-sm4 ms-md3">
+        < div className="ms-Grid-col ms-sm12 ms-md3">
             <TextField
               label="Jumlah Saudara"
               field="jml_saudara"
@@ -1080,7 +1080,7 @@ export default () => {
               setErrors={setErrors}
             />
           </div>
-          <div className="ms-Grid-col ms-sm6 ms-md9">
+          <div className="ms-Grid-col ms-sm12 ms-md9">
             <TextField
               label="Email Pribadi"
               field="email"
@@ -1094,7 +1094,7 @@ export default () => {
 
         <h2 className="ms-font-xl" style={{ marginTop:30 }}>REGISTRASI PESERTA DIDIK<hr></hr></h2>
         <div className="ms-Grid-row">
-          <div className="ms-Grid-col ms-sm6 ms-md6">
+          <div className="ms-Grid-col ms-sm12 ms-md6">
             <Dropdown
               field="jenis_sekolah"
               label="Jenis Sekolah"
@@ -1108,7 +1108,7 @@ export default () => {
               setErrors={setErrors}
             />
           </div>
-          <div className="ms-Grid-col ms-sm6 ms-md6">
+          <div className="ms-Grid-col ms-sm12 ms-md6">
             <TextField
               label="Nama Sekolah SMP/MTs"
               field="nama_sekolah_sebelumnya"
@@ -1120,7 +1120,7 @@ export default () => {
           </div>
         </div>
         <div className="ms-Grid-row">
-          <div className="ms-Grid-col ms-sm6 ms-md6">
+          <div className="ms-Grid-col ms-sm12 ms-md6">
             <TextField
               label="No. Ijazah SMP/MTs"
               field="no_ijazah"
@@ -1130,7 +1130,7 @@ export default () => {
               setErrors={setErrors}
             />
           </div>
-          <div className="ms-Grid-col ms-sm6 ms-md6 ">
+          <div className="ms-Grid-col ms-sm12 ms-md6 ">
             <TextField
               label="No. SKHUN SMP/MTs"
               field="no_skhun"
