@@ -16,15 +16,15 @@ import { api } from "./api";
 import moment from "moment";
 
 const required = [
-  "no_ijazah",
-  "no_skhun",
+  // "no_ijazah",
+  // "no_skhun",
   "no_kk",
   "no_akta_kelahiran",
   "nama_lengkap",
   "jenis_kelamin",
   "agama",
   "nisn",
-  "no_induk",
+  // "no_induk",
   "nik",
   "tempat_lahir",
   "tgl_lahir",
@@ -40,7 +40,7 @@ const required = [
   "penghasilan_ayah",
   "nama_ibu",
   "tahun_lahir_ibu",
-  "nik_ibu",
+  "nik_ibu",  
   "pekerjaan_ibu",
   "pendidikan_ibu",
   "jenis_tinggal",
@@ -179,9 +179,12 @@ export default () => {
           <h2 style={{
               display: 'flex', justifyContent:'center', alignItems: 'center',
               }}>FORMULIR PENDAFTARAN PESERTA DIDIK BARU</h2>
-          <h1 className="ms-font-su" 
+          {/* <h1 className="ms-font-su" 
             style={{
               marginTop:-15, display: 'flex', justifyContent:'center', alignItems: 'center',
+              }}>{sekolah.nama_sekolah}</h1> */}
+          <h1 style={{
+              marginTop:-20, display: 'flex', justifyContent:'center', alignItems: 'center',
               }}>{sekolah.nama_sekolah}</h1>
           <h3 style={{
               marginTop:-20, display: 'flex', justifyContent:'center', alignItems: 'center',
@@ -317,7 +320,7 @@ export default () => {
             </div>
         </div>        
         <div className="ms-Grid-row">
-          <div className="ms-Grid-col ms-sm4">
+          <div className="ms-Grid-col ms-sm6x">
             <TextField
               label="NISN"
               field="nisn"
@@ -339,7 +342,7 @@ export default () => {
               }}
             />
           </div>
-          <div className="ms-Grid-col ms-sm4">
+          {/* <div className="ms-Grid-col ms-sm4">
             <TextField
               label="No. Induk Siswa"
               field="no_induk"
@@ -348,8 +351,8 @@ export default () => {
               errors={errors}
               setErrors={setErrors}
             />
-          </div>
-          <div className="ms-Grid-col ms-sm4">
+          </div> */}
+          <div className="ms-Grid-col ms-sm6">
             <TextField
               label="NIK"
               field="nik"
@@ -412,7 +415,7 @@ export default () => {
         </div>
 
         <div className="ms-Grid-row">          
-          <div className="ms-Grid-col ms-sm7">
+          {/* <div className="ms-Grid-col ms-sm7">
             <TextField
               label="Rombongan Belajar (Rombel)"
               field="rombel"
@@ -421,11 +424,11 @@ export default () => {
               errors={errors}
               setErrors={setErrors}
             />
-          </div>
-          <div className="ms-Grid-col ms-sm5">
+          </div> */}
+          <div className="ms-Grid-col ms-sm6">
             <TextField
-              label="Tingkat"
-              field="rombel_tingkat"
+              label="Kelas"
+              field="kelas"
               data={data}
               setData={setData}
               errors={errors}
@@ -1119,7 +1122,7 @@ export default () => {
         <div className="ms-Grid-row">
           <div className="ms-Grid-col ms-sm6 ms-md6">
             <TextField
-              label="No. Ijazah Sebelumnya"
+              label="No. Ijazah SMP/MTs"
               field="no_ijazah"
               data={data}
               setData={setData}
@@ -1129,7 +1132,7 @@ export default () => {
           </div>
           <div className="ms-Grid-col ms-sm6 ms-md6 ">
             <TextField
-              label="No. SKHUN Sebelumnya"
+              label="No. SKHUN SMP/MTs"
               field="no_skhun"
               data={data}
               setData={setData}

@@ -14,7 +14,7 @@
     "@uifabric/icons": "^6.4.0",
     "axios": "^0.18.0",
     "moment": "^2.24.0",
-    "office-ui-fabric-react": "^6.148.1",
+    "office-ui-fabric-react": "^6.211.1",
     "react": "^16.12.0",
     "react-content-loader": "^4.0.1",
     "react-dom": "^16.12.0",
