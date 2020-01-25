@@ -14,11 +14,12 @@ import {
 } from 'office-ui-fabric-react';
 import { api } from './api';
 import moment from 'moment';
-import { PDFViewer, PDFDownloadLink } from '@react-pdf/renderer';
+import { Page, Text, View, Document, StyleSheet, PDFDownloadLink, PDFViewer } from '@react-pdf/renderer';
+import Popup from "reactjs-popup";
 import SavePDF from './SavePDF';
-import FormulirPPDB from './Modal';
 
 const required = [
+  // 'tanggal_daftar',
   // "no_ijazah",
   // "no_skhun",
   'no_kk',
@@ -135,8 +136,114 @@ export default () => {
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center'
-            }}><FormulirPPDB /></div>
+            }}>
+            
+            <Popup trigger={<button className="button" style={{
+              cursor: 'pointer',
+              padding: 10,
+              paddingLeft: 10,
+              paddingRight: 10,
+              color: 'darkblue',
+              fontWeight: 'bold',
+            }}> Lihat Data Saya </button>} modal>
+              {close => (                
+                <div className="modal">
+                  <Document>
+                    <Page size="A4">
+                      <div className="header">
+                        <h3
+                          style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            textAlign: 'center'
+                          }}
+                        >
+                          FORMULIR PENDAFTARAN PESERTA DIDIK BARU
+                        </h3>
+                        <h3
+                          style={{
+                            marginTop: -20,
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                          }}
+                        >
+                          {sekolah.nama_sekolah}
+                        </h3>
+                        <hr/>
+                      </div>
 
+                      <div className="content" style={{
+                            padding: 10,
+                            fontSize: 12,
+                          }}>
+                          Tanggal Pendaftaran : {data.tanggal_daftar}<br/>
+                          No. Formulir : <br/>
+                          Kode Formulir : FPSB<br/>
+                          Kode Sekolah: {sekolah.id.pad(3)}<br/>
+                          No Induk / NSA: {data.nisn}<br/>
+                          <h4>BIODATA CALON SISWA</h4>
+                          Nama Calon Siswa : {data.nama_lengkap}<br/>
+                          No. Akta Kelahiran : {data.no_akta_kelahiran}<br/>
+                          NIK : {data.nik}<br/>
+                          No. Kartu Keluarga (KK) : {data.no_kk}<br/>
+                          Tempat, Tanggal Lahir : {data.tempat_lahir}, {data.tgl_lahir}<br/>
+                          Jenis Kelamin : {data.jenis_kelamin}<br/>
+                          Agama : {data.agama}<br/>
+                          Tinggi : {data.tinggi}<br/>
+                          Berat Badan : {data.berat}<br/>
+                          No. HP Siswa : {data.no_hp_siswa}<br/>
+                          <h4>INFORMASI PENDIDIKAN </h4>
+                          Jenis Sekolah : {data.jenis_sekolah}<br/>
+                          Nama SMP/MTs : {data.nama_sekolah_sebelumnya}<br/>
+                          No. Ijazah SMP/MTs :  {data.no_ijazah}<br/>
+                          No. SKHUN SMP/MTs : {data.no_skhun}<br/>                                                 
+    
+                      </div>
+                      <hr/>
+
+                      <div className="actions" style={{
+                          textAlign:'right',
+                          paddingTop: 5,
+                          paddingBottom: 20,
+                          paddingRight: 20,
+                      }}>
+                          <button className="button" style={{ 
+                                  marginRight:5,
+                                  padding: 10,
+                                  paddingLeft: 10,
+                                  paddingRight: 10,
+                                  cursor: 'pointer', 
+                              }}>
+                              <PDFDownloadLink document={<SavePDF data={data} />} fileName='Formulir_PPDB2020_SMA_MaryamSurabaya.pdf'>
+                                  {({ blob, url, loading, error }) =>
+                                  loading ? 'Loading document...' : 'Download Formulir'
+                                  }
+                              </PDFDownloadLink>
+                          </button>
+                          <button
+                              className="button"
+                              onClick={() => {
+                              console.log("modal closed ");
+                              close();
+                              }}
+                              style={{
+                                  padding: 10,
+                                  paddingLeft: 10,
+                                  paddingRight: 10,
+                                  cursor: 'pointer',
+                              }}
+                          >
+                              Close
+                          </button>           
+                      </div>
+                    </Page>
+                  </Document>
+                </div>
+              )}
+            </Popup>
+          </div>        
         </div>
 
         <div
@@ -190,7 +297,7 @@ export default () => {
     );
   }
 
-  return (
+  return (    
     <div className={'wrapper'}>
       <div className='ms-Grid-row'>
         <div className='ms-Grid-col ms-sm12 ms-md2'>
@@ -271,18 +378,21 @@ export default () => {
       <div className='ms-Grid-row'>
         <div className='ms-Grid-col ms-sm12 ms-md3'>
           <DatePicker
-            value={moment(data).toDate()}
-            formatDate={(date: Date | undefined): string => {
-              return moment(date).format('DD MMM YYYY');
-            }}
-            onSelectDate={(date: Date | null | undefined) => {
-              if (date != null)
-                setData({ setData: moment(date).format('YYYY-MM-DD') });
-            }}
-            showWeekNumbers={false}
-            allowTextInput={true}
-            firstWeekOfYear={1}
-            label='Tanggal Daftar'
+            value={moment(data.tanggal_daftar).toDate()}
+              formatDate={(date: Date | undefined): string => {
+                return moment(date).format('DD MMM YYYY');
+              }}
+              onSelectDate={(date: Date | null | undefined) => {
+                if (date != null)
+                  setData({
+                    ...data,
+                    tanggal_daftar: moment(date).format('YYYY-MM-DD')
+                  });
+              }}
+              showWeekNumbers={false}
+              allowTextInput={true}
+              firstWeekOfYear={1}
+              label='Tanggal Daftar'
           />
         </div>
         <div className='ms-Grid-col ms-sm12 ms-md6'>
