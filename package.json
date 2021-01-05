@@ -13,7 +13,7 @@
     "@types/react": "16.8.6",
     "@types/react-dom": "16.8.2",
     "@uifabric/icons": "^6.4.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "moment": "^2.24.0",
     "office-ui-fabric-react": "^6.211.1",
     "react": "^16.12.0",
